@@ -2,7 +2,7 @@
 
 ## Installation
 
-Copy log_analysis.py into /vagrant directory containing newsdata.sql which hs been loaded into psql as described on the Udacity website
+Copy log_analysis.py into /vagrant directory containing newsdata.sql which has been loaded into psql as described on the Udacity website
 
 ## Requirements
 
