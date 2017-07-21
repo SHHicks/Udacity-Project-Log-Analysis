@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 #
 # Udacity Project: Log Analysis
 # Author: Steve Hicks
@@ -33,9 +33,9 @@ order by num desc;'''
 
 ERRORS_SQL = '''
 select * from (
-  select day, bad * 10000 / total as error
+  select to_char(day, 'Mon DD, YYYY') as fmt_day, bad * 10000 / total as error
   from (
-    select to_char(time, 'Mon DD, YYYY') as day, count(*) as total,
+    select  date(time) as day, count(*) as total,
     count(case when log.status = '404 NOT FOUND' then 1 else null end) as bad
     from log
     group by day
@@ -64,7 +64,7 @@ print "\n1. What are the most popular three articles of all time?\n"
 for row in results:
     print '"' + row[0] + '" - ' + str(row[1]) + ' views'
 
-# execute the SQL command to find the three most popular articles
+# execute the SQL command to find the most popular authors
 
 c.execute(POPULAR_AUTHORS_SQL)
 results = c.fetchall()
